@@ -6,7 +6,7 @@
 ２，docker-compose up -d --build
 
 ## 環境構築
-１，docker-copose exe php bash　　
+１，docker-compose exe php bash　　
 ２，composer install　　
 ３，.env.exampleファイルから.envを作成して環境変数を変更　　
 ４，php artisan key:generate　　
