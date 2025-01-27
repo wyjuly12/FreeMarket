@@ -1,0 +1,75 @@
+.boby {
+    max-width: 1500px;
+}
+
+.common-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: black;
+}
+
+.header-logo {
+    display: block;
+    text-align: center;
+    width: 30%;
+}
+
+.header-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+}
+
+.header-input {
+    display: block;
+    width: 60%;
+    height: 30px;
+    padding: 5px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.header-link a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: large;
+    margin-right: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.header-link form button {
+    display: block;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    text-align: center;
+    font-size: large;
+    margin-right: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.header-link a button {
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: whitesmoke;
+    text-decoration: none;
+    font-size: large;
+    border-radius: 5px;
+    cursor: pointer;
+}

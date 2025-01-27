@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Route::get('/', function () {
+    // return view('welcome');
+// });
+
+Route::get('/login' , [AuthController::class, 'login'] )->name('login');
+Route::get('/register' , [AuthController::class, 'register'] );
+
+
+Route::middleware('auth')->group(function(){
+    Route::get('/', [ItemController::class, 'index']);
+    Route::get('/?tab=mylist', [ItemController::class, 'list']);
+    Route::get('/item/:{item_id}', [ItemController::class, 'detail']);
+    Route::post('/purchase/:{item_id}', [ItemController::class, 'postBuy']);
+    Route::post('/purchase/address/:{item_id}', [ItemController::class, 'change']);
+    Route::post('/sell', [ItemController::class, 'postSell']);
+    Route::get('/mypage', [ProfileController::class, 'parson']);
+    Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+    Route::get('/mypage?tab=buy', [ProfileController::class, 'getBuy']);
+    Route::get('/mypage?tab=sell', [ProfileController::class, 'getSell']);
 });
