@@ -5,6 +5,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\RegisteredUserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +29,11 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/login' , [AuthController::class, 'login'] )->name('login');
 Route::get('/register' , [AuthController::class, 'register'] )->name('register');
+
+Route::post('/login' , [AuthenticatedSessionController::class, 'store'] );
+Route::post('/register' , [RegisteredUserController::class, 'store'] );
+
+
 
 
 Route::middleware('auth')->group(function(){
