@@ -21,12 +21,13 @@ use App\Http\Controllers\ProfileController;
     // return view('welcome');
 // });
 
+
+Route::get('/', [ItemController::class, 'index']);
 Route::get('/login' , [AuthController::class, 'login'] )->name('login');
-Route::get('/register' , [AuthController::class, 'register'] );
+Route::get('/register' , [AuthController::class, 'register'] )->name('register');
 
 
 Route::middleware('auth')->group(function(){
-    Route::get('/', [ItemController::class, 'index']);
     Route::get('/?tab=mylist', [ItemController::class, 'list']);
     Route::get('/item/:{item_id}', [ItemController::class, 'detail']);
     Route::post('/purchase/:{item_id}', [ItemController::class, 'postBuy']);

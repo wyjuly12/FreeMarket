@@ -19,7 +19,7 @@ class Item extends Model
             'buy_flag'
         ];
 
-
+  
         public function categoies(){
             return $this->hasMany('App\Models\Categorize');
         }
@@ -32,4 +32,21 @@ class Item extends Model
             return $this->hasMany('App\Models\Favorite');
         }
 
+        public function scopeGetSale($query , $user_id){
+            $query->where('sell_flag', '!=' , $user_id );         
+            }
+
+        public function scopeMySell($query , $user_id){
+            $query->where('sell_flag', '=' , $user_id);
+        }
+
+        public function scopeMyBuy($query , $user_id){
+            $query->where('buy_flag', '=' , $user_id);
+        }
+
+        public function scopeSearchWord($keyword){
+            if(! $keyword){
+                where('goods','LIKE','%'.$keyword.'%');
+            }
+        }
 }

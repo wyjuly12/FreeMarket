@@ -19,7 +19,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => '腕時計' ,
             'price' => '15000' ,
             'explanation' => 'スタイリッシュなデザインのメンズ腕時計' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Watch.jpg' ,  
             'condition' => '良好'             
         ];
         DB::table('items')->insert($param);
@@ -28,7 +28,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'HDD' ,
             'price' => '5000' ,
             'explanation' => '高速で信頼性の高いハードディスク' ,
-            'image' => '/images/' ,  
+            'image' => '/images/HDD.jpg' ,  
             'condition' => '目立った傷や汚れなし'             
         ];
         DB::table('items')->insert($param);
@@ -37,7 +37,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => '玉ねぎ3束' ,
             'price' => '300' ,
             'explanation' => '新鮮な玉ねぎ3束のセット' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Onion.jpg' ,  
             'condition' => 'やや傷や汚れあり'            
         ];
         DB::table('items')->insert($param);
@@ -46,7 +46,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => '革靴' ,
             'price' => '4000' ,
             'explanation' => 'クラシックなデザインの革靴' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Shoes.jpg' ,  
             'condition' => '状態が悪い'            
         ];
         DB::table('items')->insert($param);
@@ -55,7 +55,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'ノートPC' ,
             'price' => '45000' ,
             'explanation' => '高性能なノートパソコン' ,
-            'image' => '/images/' ,  
+            'image' => '/images/LaptopPC.jpg' ,  
             'condition' => '良好'            
         ];
         DB::table('items')->insert($param);
@@ -64,7 +64,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'マイク' ,
             'price' => '8000' ,
             'explanation' => '高音質のレコーディング用マイク' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Mic.jpg' ,  
             'condition' => '目立った傷や汚れなし'            
         ];
         DB::table('items')->insert($param);
@@ -73,7 +73,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'ショルダーバッグ' ,
             'price' => '3500' ,
             'explanation' => 'おしゃれなショルダーバッグ' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Bag.jpg' ,  
             'condition' => 'やや傷や汚れあり'            
         ];
         DB::table('items')->insert($param);
@@ -82,7 +82,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'タンブラー' ,
             'price' => '500' ,
             'explanation' => '使いやすいタンブラー' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Tumbler.jpg' ,  
             'condition' => '状態が悪い'             
         ];
         DB::table('items')->insert($param);
@@ -91,7 +91,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'コーヒーミル' ,
             'price' => '4000' ,
             'explanation' => '手動のコーヒーミル' ,
-            'image' => '/images/' ,  
+            'image' => '/images/CoffeeGrinder.jpg' ,  
             'condition' => '良好'             
         ];
         DB::table('items')->insert($param);
@@ -100,7 +100,7 @@ class ItemsTableSeeder extends Seeder
             'goods' => 'メイクセット' ,
             'price' => '2500' ,
             'explanation' => '便利なメイクアップセット' ,
-            'image' => '/images/' ,  
+            'image' => '/images/Cosmetics.jpg' ,  
             'condition' => '目立った傷や汚れなし'             
         ];
         DB::table('items')->insert($param);

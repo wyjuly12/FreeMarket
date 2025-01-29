@@ -23,12 +23,12 @@
             <div class="header-menu">
                 <ul class="header-nav">
                     <li class="header-link">
-                        <a href="#">マイページ</a>
+                        <a href="/mypage">マイページ</a>
                     </li>
                     <li class="header-link">
                         <form action="/logout" method="post">
                             @csrf
-                            <button>ログアウト</button>
+                            <button type="submit">ログアウト</button>
                         </form> 
                     </li>
                     <li class="header-link">

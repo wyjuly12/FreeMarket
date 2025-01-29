@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/css/myprofile.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
 @endsection
 
 @section('content')
 
-<div class="myprofile-form">
+<div class="profile-form">
     <div class="form-title">
         <h2>プロフィール設定</h2>
     </div>
-    <form action="/" method="post">
+    <form action="#" method="post">
         @csrf
         <div class="form-image" enctype="multipart/form-data">
             <output class="form-image__out" id="file-output" >
