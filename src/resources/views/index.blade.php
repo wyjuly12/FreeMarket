@@ -15,7 +15,7 @@
 <div class="item-content">
     @foreach($items as $item)
     <div class="content-group">
-        <img class="content-image" src="{{ $item->image }}" alt="商品画像">
+        <a href="/item/:{{$item->id}}"><img class="content-image" src="{{ $item->image }}" alt="商品画像"></a>
             <span class="content-name">{{ $item->goods }}</span>
             @if($item->buy_flag != null)
                 <span class="content-flag">【sold】</span>

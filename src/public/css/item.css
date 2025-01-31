@@ -1,0 +1,122 @@
+.item-content {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.content-left {
+    width: 50%;
+    margin: 100px auto;
+}
+
+.content-image {
+    display: block;
+    margin: 0px auto;
+    width: 300px;
+    height: 300px;
+}
+
+.content-right {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.content-group {
+    margin-bottom: 50px;
+}
+
+.content-button {
+    display: block;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: tomato;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content-button a {
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+
+.content-button__disabled {
+    display: block;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: gainsboro;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+
+.content-infomation {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.content-label {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.content-category {
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    margin-right: 10px;
+    align-content: center;
+    text-align: center;
+    padding: 5px;
+    border: solid, 1px;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+}
+
+.content-photo {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: solid, 1px;
+    border-radius: 100%;
+}
+
+.content-user {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.content-comment {
+    display: block;
+    width: 70%;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.content-button__form {
+    display: block;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    background-color: tomato;
+    cursor: pointer;
+}

@@ -33,6 +33,8 @@
     width: 100%;
     height: 40px;
     text-align: center;
+    font-size: large;
+    font-weight: bold;
     background-color: tomato;
     border: none;
     border-radius: 5px;
@@ -91,6 +93,8 @@
         width: 100%;
         height: 30px;
         text-align: center;
+        font-size: large;
+        font-weight: bold;
         background-color: tomato;
         border: none;
         border-radius: 5px;

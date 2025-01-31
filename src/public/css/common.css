@@ -4,69 +4,96 @@
 
 .common-header {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    height: 80px;
+    height: 60px;
     width: 100%;
     background-color: black;
 }
 
-.header-logo {
-    display: block;
-    text-align: center;
+.header-left {
     width: 30%;
+    margin: 0px, auto;
 }
 
-.header-group {
-    display: flex;
-    justify-content: space-around;
+.header-logo {
+    display: block;
+    width: 80%;
+    height: 80%;
     align-items: center;
-    width: 70%;
+    margin: auto auto;
+}
+
+.header-center {
+    width: 40%;
+    margin: 0, 10px;
 }
 
 .header-input {
     display: block;
-    width: 60%;
-    height: 30px;
-    padding: 5px;
+    width: 80%;
+    height: 40px;
     align-items: center;
+    padding: 5px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.header-nav {
+.header-right {
+    width: 30%;
+}
+
+
+.header-link {
+    width: 30%;
+    margin: 0px, auto;
+}
+
+.header-menu {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    list-style: none;
 }
+
 
 .header-link a {
     display: block;
-    text-decoration: none;
+    width: 100%;
+    height: 40px;
+    margin: 0px, auto;
     text-align: center;
+    align-content: center;
     font-size: large;
-    margin-right: 20px;
+    margin-right: 0, auto;
+    text-decoration: none;
     color: whitesmoke;
     cursor: pointer;
 }
 
-.header-link form button {
+.header-form button {
     display: block;
-    background: transparent;
+    width: 100%;
+    height: 40px;
+    margin: 0px, auto;
+    align-items: center;
+    text-decoration: none;
     border: none;
     outline: none;
     box-shadow: none;
-    text-align: center;
+    align-content: center;
     font-size: large;
-    margin-right: 20px;
+    background-color: black;
     color: whitesmoke;
     cursor: pointer;
 }
 
-.header-link a button {
+.header-button button {
     display: block;
-    width: 100px;
+    width: 100%;
     height: 40px;
+    margin: 0px, auto;
+    padding: 5px 20px;
+    background: transparent;
+    text-align: center;
+    align-content: center;
     background-color: whitesmoke;
     text-decoration: none;
     font-size: large;

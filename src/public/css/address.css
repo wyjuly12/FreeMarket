@@ -1,4 +1,4 @@
-.profile-form {
+.address-form {
     width: 30%;
     margin: 0px auto;
 }
@@ -11,40 +11,6 @@
 .form-group {
     margin-bottom: 30px;
 }
-
-.form-image {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-
-.form-image__out img {
-    display: inline-block;
-    align-items: center;
-    width: 150px;
-    height: 150px;
-    border: 1px solid;
-    border-radius: 100%;
-}
-
-.form-image__in {
-    display: none;
-}
-
-.form-image__btn {
-    display: inline-block;
-    width: 150px;
-    height: 40px;
-    font-weight: bolder;
-    color: tomato;
-    border: 1px, solid, tomato;
-    background-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 
 .form-label {
     display: block;
