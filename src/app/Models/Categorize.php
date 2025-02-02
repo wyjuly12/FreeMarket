@@ -16,7 +16,7 @@ class Categorize extends Model
 
         // リレーション(Categorizesテーブル→Itemsテーブル)
         public function items(){
-            return $this->belongsTo('App\Models\Item');
+            return $this->belongsToMany('App\Models\Item');
         }
         
         // リレーション(Categorizesテーブル→Categoriesテーブル)
@@ -24,12 +24,10 @@ class Categorize extends Model
             return $this->belongsTo('App\Models\Category');
         }
 
+
         //
 
-        public function scopeSeachCategory($query , $item_id){
-           $a = $query->where('item_id' ,'=' ,'$item_id');
-            dd($a);
-        }
+ 
 
 
           

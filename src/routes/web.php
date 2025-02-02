@@ -31,13 +31,15 @@ use App\Http\Controllers\RegisteredUserController;
 // ログイン＆会員登録ページ
 Route::get('/login' , [AuthController::class, 'login'] )->name('login');
 Route::get('/register' , [AuthController::class, 'register'] )->name('register');
-Route::post('/login' , [AuthenticatedSessionController::class, 'store'] );
-Route::post('/register' , [RegisteredUserController::class, 'store'] );
 
+
+
+   
 
 // 商品一覧＄商品詳細ページ
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/:{item_id}', [ItemController::class, 'detail']);
+   
 
 // 認証要ページ
 Route::middleware('auth')->group(function(){
@@ -45,17 +47,25 @@ Route::middleware('auth')->group(function(){
     Route::get('/?tab=mylist', [ItemController::class, 'list']);
     Route::post('/purchase/:{item_id}', [ItemController::class, 'postBuy']);
     Route::post('/purchase/address/:{item_id}', [ItemController::class, 'change']);
+    Route::get('/sell',[ItemController::class, 'getsell']);    
     Route::post('/sell', [ItemController::class, 'postSell']);
+
+
     Route::get('/mypage', [ProfileController::class, 'parson']);
     Route::get('/mypage/profile', [ProfileController::class, 'profile']);
-    Route::get('/mypage?tab=buy', [ProfileController::class, 'getBuy']);
-    Route::get('/mypage?tab=sell', [ProfileController::class, 'getSell']);
+    Route::get('/mypage?tab=buy', [ProfileController::class, 'searchBuy']);
+    Route::get('/mypage?tab=sell', [ProfileController::class, 'searchSell']);
 
 
+
+    Route::post('/item/:{item_id}', [ItemController::class, 'comment']);
 
     Route::get('/purchase/:{item_id}',[ItemController::class, 'purchase']);
-    Route::get('/purchase/address/:{item_id}',[ItemController::class, 'edit']);
-    Route::get('/sell',[ItemController::class, 'sell']);
+  
+
+
+    Route::get('/purchase/address/:{item_id}',[ProfileController::class, 'edit']);
+
 });
 
 

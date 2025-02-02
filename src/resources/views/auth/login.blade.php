@@ -16,14 +16,14 @@
             <label class="form-label" for="" >メールアドレス</label>
             <input class="form-input" type="email" name="email" value="{{ old('email') }}">
             @error('email')
-            <p class="form-error">{{$errors->first('email')}}</p>
+            <span class="form-error">{{$errors->first('email')}}</span>
             @enderror
         </div>
         <div class="form-group">
             <label class="form-label" for="" >パスワード</label>
             <input class="form-input" type="password" name="password" value="">
             @error('password')
-            <p class="form-error">{{$errors->first('password')}}</p>
+            <span class="form-error">{{$errors->first('password')}}</span>
             @enderror
         </div>
         <div class="form-group">

@@ -16,8 +16,8 @@ class RegisterMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return response(view('profile'));
 
-        return $next($request);
+       return $next($request);
+      
     }
 }

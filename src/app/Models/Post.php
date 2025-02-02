@@ -16,11 +16,11 @@ class Post extends Model
         ];
 
         public function items(){
-            return $this->belongsTo('App\Models\Item');
+            return $this->belongsToMany('App\Models\Item')->withTimestamps();
         }
 
         public function pepole(){
-            return $this->belongsTo('App\Models\Person');
+            return $this->belongsToMany('App\Models\Person')->withTimestamps();
         }
 
 }

@@ -23,12 +23,10 @@ class Item extends Model
         // リレーション(Itemsテーブル→Categoriesテーブル)
         public function categoies(){
             return $this->hasMany('App\Models\Categorize');
-        }   
+        }  
 
-        public function getCategoies(){
-            return $this->categoies->category_id;
-        }
-
+        
+ 
         // リレーション(Itemsテーブル→Conditionsテーブル)
         public function condition(){
             return $this->belongsTo('App\Models\Condition');
@@ -50,6 +48,22 @@ class Item extends Model
                 $query->where('goods','LIKE','%'.$keyword.'%');
             }
         }
+        
+        //機能(カテゴリ検索)
+        public function checkCategory($category,$item){
+
+            $category_id = $category->id;
+            $item_date = item::find($item->id);
+            $itemCategories = $item_date->categoies;
+            foreach($itemCategories as $itemCategory){
+                    if($itemCategory->category_id == $category_id){
+                        $returnText = "yes";
+                        return $returnText;
+                    }
+            }
+        }
+
+
 
 
 
@@ -72,4 +86,9 @@ class Item extends Model
         }
 
         
+
+
+
 }
+
+    

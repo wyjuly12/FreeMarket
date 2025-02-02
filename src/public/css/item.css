@@ -70,6 +70,23 @@
     margin-right: 40px;
 }
 
+.category-output span {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: small;
+    font-weight: bold;
+    width: 100px;
+    height: 20px;
+    border: 1px, solid;
+    border-radius: 15px;
+    color: snow;
+    background-color: slategray;
+    align-content: center;
+    text-align: center;
+}
+
+
 .content-category {
     display: inline-block;
     width: auto;
@@ -100,16 +117,21 @@
 .content-comment {
     display: block;
     width: 70%;
-    margin-bottom: 20px;
     padding: 5px;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
+.content-error {
+    color: red;
+}
+
+
 .content-button__form {
     display: block;
     width: 70%;
     height: 40px;
+    margin-top: 20px;
     text-align: center;
     align-content: center;
     font-size: large;

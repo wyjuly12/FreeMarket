@@ -23,6 +23,9 @@
             @endif
         </div>
         <div class="content-group">
+            <button type="button">お気に入り</button>
+        </div>
+        <div class="content-group">
             <h3>商品説明</h3>
             <p class="contet-text">{{$item->explanation}}</p>
         </div>
@@ -30,8 +33,12 @@
             <h3>商品の情報</h3>
             <div class="content-infomation">
                 <label class="content-label" for="">カテゴリ</label>
-                <div class="category-output">
-                <!--  -->
+                <div class="category-output">   
+                    @foreach($categories as $category)
+                        @if($item->checkCategory($category,$item) =='yes')
+                        <span>{{$category->category}}</span>
+                        @endif
+                    @endforeach           
                 </div>               
             </div>
             <div class="content-infomation">
@@ -43,11 +50,19 @@
             <img class="content-photo" src="" alt="">
             <span class="content-user">user</span>
         </div>
+
         <div class="content-group">
             <h3>商品へのコメント</h3>
             @if (Auth::check())
-                <textarea class="content-comment"name="comment"  rows="10"></textarea>
-                <form class="content-button__form"action="#" method="post">コメントを送信する</form>
+                <form  action="/item/:{{$item->id}}" method="post">
+                    @csrf
+                    <input type="hidden" name="item_id" value="{{$item->id}}">
+                    <textarea class="content-comment" name="comment"  rows="10">{{ old('comment')}}</textarea>
+                    @error('comment')
+                        <span class="content-error">{{$errors->first('comment')}}</span>
+                    @enderror
+                    <button class="content-button__form" type="submit">コメントを送信する</button>
+                </form>
             @else
                 <textarea class="content-comment"  rows="10" disabled placeholder="ログイン後にコメントができます。"></textarea>
                 <p class="content-error"></p>

@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Laravel\Fortify\Contracts\RegisterViewResponse
      */
-    public function create(Request $request): RegisterViewResponse
+    public function create(RegisterRequest $request): RegisterViewResponse
     {
         return app(RegisterViewResponse::class);
     }

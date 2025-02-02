@@ -10,7 +10,7 @@
     <div class="top-image">
        <img class="top-image" src="" alt="画像"><span>{{ $user_id->name }}</span>  
     </div>
-    <button class="top-link" type="button"><a href="/mypage/profile">プロフィールを変更</a></button>
+    <button class="top-link" type="button"><a href="/mypage/profile" >プロフィールを変更</a></button>
 </div>
 
 <div class="mypage-menu">

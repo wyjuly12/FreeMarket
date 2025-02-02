@@ -36,7 +36,7 @@
                 </div> 
             </div>
         </div>
-        @endif 
+        @endif
     </header>
 
     <script>
@@ -54,6 +54,7 @@
     </script>
 
     <main>
+
         @yield('content')
     </main>
 

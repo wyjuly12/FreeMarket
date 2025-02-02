@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Laravel\Fortify\Contracts\LoginViewResponse
      */
-    public function create(Request $request): LoginViewResponse
+    public function create(LoginRequest $request): LoginViewResponse
     {
         return app(LoginViewResponse::class);
     }
@@ -71,7 +71,7 @@ class AuthenticatedSessionController extends Controller
      * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
      * @return \Illuminate\Pipeline\Pipeline
      */
-    protected function loginPipeline(Request $request)
+    protected function loginPipeline(LoginRequest $request)
     {
         if (Fortify::$authenticateThroughCallback) {
             return (new Pipeline(app()))->send($request)->through(array_filter(

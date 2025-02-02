@@ -10,13 +10,13 @@
     <div class="form-title">
         <h2>プロフィール設定</h2>
     </div>
-    <form action="/register" method="post">
+    <form action="/" method="post">
         @csrf
         <div class="form-image" enctype="multipart/form-data">
             <output class="form-image__out" id="file-output">
                 <img src="{{ asset('/image/Bag.jpg') }}" alt="プロフィール画像" >
             </output>
-            <input class="form-image__in" type="file" id="file-input"  onchange="fileOutput()"></input>
+            <input class="form-image__in" type="file" id="file-input" name="photo" onchange="fileOutput()"></input>
             <button class="form-image__btn" type="button" id="file-button" onclick="clickUpload()">画像を選択する</button>
             @error('')
             <p class="form-error"></p>

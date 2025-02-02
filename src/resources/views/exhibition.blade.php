@@ -23,9 +23,9 @@
             <div class="form-section">
                 <label class="section-title">カテゴリー</label>
                 <div class="category-input">
-                    @foreach($categories as $ca)
-                    <input type="checkbox" name="category" id="category_{{$ca->id}}">
-                    <label for="category_{{$ca->id}}">{{$ca->category}}</label>
+                    @foreach($categories as $category)
+                    <input type="checkbox" name="category" id="category_{{$category->id}}">
+                    <label for="category_{{$category->id}}">{{$category->category}}</label>
                     @endforeach
                 </div>
             </div>
@@ -33,8 +33,8 @@
                 <label class="section-title">商品の状態</label>
                 <select class="form-input" name="conditon" id="conditon">
                     <option hidden>選択してください</option>
-                    @foreach($conditons as $co)
-                    <option value="{{$co->id}}">{{$co->condition}}</option>
+                    @foreach($conditons as $conditon)
+                    <option value="{{$conditon->id}}">{{$conditon->condition}}</option>
                     @endforeach
                 </select>
 

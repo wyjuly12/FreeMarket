@@ -19,21 +19,13 @@ class ProfileController extends Controller
     public function profile(){
 
         $user_id = Auth::user();
-
         return view('profile' , compact('user_id'));
     }
 
-    public function store(){
-        $form = $request->all();
-        Person::create($form);
-        return redirect('/');
-    }
 
-
-        // 
-    public function edit($item_id){
-        $item = Item::find($item_id);
-        return view('address', compact('item')); 
+    // 住所変更ページ
+    public function edit(){
+        return view('address');
     }
 
 
