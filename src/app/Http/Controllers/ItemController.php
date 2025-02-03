@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Item;
 use App\Models\Post;
+use App\Models\Person;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Http\Requests\CommentRequest;
@@ -29,7 +31,7 @@ class ItemController extends Controller
         $categories = category::all();
         $item = Item::find($item_id);
 
-        return view('item' , compact('item','categories' ));
+        return view('item' , compact('item','categories'));
     }
 
     // コメント送信機能(詳細画面)
@@ -48,8 +50,10 @@ class ItemController extends Controller
 
     // 商品購入ページ表示
     public function purchase($item_id){
+
+        $person = person::find(Auth::id());
         $item = Item::find($item_id);
-        return view('purchase', compact('item'));
+        return view('purchase', compact('item','person'));
     }
 
     // 商品出品ページ表示
@@ -58,6 +62,7 @@ class ItemController extends Controller
         $categories = Category::all();
         return view('exhibition' ,compact('categories','conditons'));
     }
+
 
 
     //出品機能(商品出品ページ)

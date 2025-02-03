@@ -15,6 +15,7 @@
     margin: 0px auto;
     width: 300px;
     height: 300px;
+    border-radius: 5px;
 }
 
 .content-right {
@@ -24,6 +25,12 @@
 
 .content-group {
     margin-bottom: 50px;
+}
+
+
+.content-text span {
+    font-size: x-large;
+    font-weight: bold;
 }
 
 .content-button {
@@ -101,10 +108,11 @@
     color: white;
 }
 
+
 .content-photo {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border: solid, 1px;
     border-radius: 100%;
 }
@@ -114,7 +122,13 @@
     margin-left: 40px;
 }
 
-.content-comment {
+.content-comment_view {
+    width: 70%;
+    text-align: left;
+    font-size: small;
+}
+
+.content-comment__input {
     display: block;
     width: 70%;
     padding: 5px;
@@ -127,7 +141,7 @@
 }
 
 
-.content-button__form {
+.content-button {
     display: block;
     width: 70%;
     height: 40px;

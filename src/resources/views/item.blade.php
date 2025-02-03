@@ -13,7 +13,7 @@
     <div class="content-right">
         <div class="content-group">
             <h2 class="content-title">{{$item->goods}}</h2>
-            <p class="contet-text">￥{{$item->price}}(税込)</p>
+            <p class="content-text">￥<span>{{$item->price}}</span>(税込)</p>
             @if(!Auth::check())
             <button class="content-button__disabled"disabled="disabled">ログイン後に購入手続きができます</button>          
             @elseif($item->buy_flag != null)
@@ -21,9 +21,6 @@
             @else
             <button class="content-button" type="button"><a href="/purchase/:{{ $item->id }}">購入手続きへ</a></button>
             @endif
-        </div>
-        <div class="content-group">
-            <button type="button">お気に入り</button>
         </div>
         <div class="content-group">
             <h3>商品説明</h3>
@@ -45,29 +42,31 @@
                 <label class="content-label" for="">商品の状態</label>
                 <span class="content-condition">{{$item->getCondition()}}</span>
             </div>
+            <div class="content-comunication">
+                <img class="content-photo" src="" alt="">
+                @if($item->posts != null)
+                    @foreach($item->posts as $object)
+                    <div class="content-comment_view">{{$object->getUserId()}}</div>
+                    <div class="content-comment_view">{{$object->getComment()}}</div>
+                    @endforeach
+                @endif
+            </div>
         </div>
-        <div class="content-group">
-            <img class="content-photo" src="" alt="">
-            <span class="content-user">user</span>
-        </div>
-
         <div class="content-group">
             <h3>商品へのコメント</h3>
-            @if (Auth::check())
                 <form  action="/item/:{{$item->id}}" method="post">
                     @csrf
                     <input type="hidden" name="item_id" value="{{$item->id}}">
-                    <textarea class="content-comment" name="comment"  rows="10">{{ old('comment')}}</textarea>
+                    <textarea class="content-comment__input" name="comment"  rows="10">{{ old('comment')}}</textarea>
                     @error('comment')
                         <span class="content-error">{{$errors->first('comment')}}</span>
                     @enderror
-                    <button class="content-button__form" type="submit">コメントを送信する</button>
+                    @if (Auth::check())
+                    <button class="content-button" type="submit">コメントを送信する</button>
+                        @else
+                        <button class="content-button" type="button"><a href="/login">コメントを送信する</a></button>
+                    @endif 
                 </form>
-            @else
-                <textarea class="content-comment"  rows="10" disabled placeholder="ログイン後にコメントができます。"></textarea>
-                <p class="content-error"></p>
-                <button class="content-button" type="button"><a href="/login">ログインはこちらから</a></button>
-            @endif           
         </div>
     </div>
 

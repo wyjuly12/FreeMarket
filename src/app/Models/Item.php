@@ -14,6 +14,9 @@ class Item extends Model
             'price',
             'image',
             'explanation',
+            'destination_postcode',
+            'destination_address',
+            'destination_address',
             'condition_id',
             'sell_flag',
             'buy_flag'
@@ -25,8 +28,6 @@ class Item extends Model
             return $this->hasMany('App\Models\Categorize');
         }  
 
-        
- 
         // リレーション(Itemsテーブル→Conditionsテーブル)
         public function condition(){
             return $this->belongsTo('App\Models\Condition');
@@ -36,6 +37,10 @@ class Item extends Model
             return $this->condition->condition;
         }
 
+        // リレーション(Itemsテーブル→Postsテーブル)
+        public function posts(){
+            return $this->hasMany('App\Models\Post');
+        }
 
         // 機能(商品一覧表示)
         public function scopeGetSale($query , $user_id){
@@ -53,8 +58,8 @@ class Item extends Model
         public function checkCategory($category,$item){
 
             $category_id = $category->id;
-            $item_date = item::find($item->id);
-            $itemCategories = $item_date->categoies;
+            $item_data = item::find($item->id);
+            $itemCategories = $item_data->categoies;
             foreach($itemCategories as $itemCategory){
                     if($itemCategory->category_id == $category_id){
                         $returnText = "yes";
@@ -65,12 +70,6 @@ class Item extends Model
 
 
 
-
-
-
-        public function posts(){
-            return $this->hasMany('App\Models\Posts');
-        }
 
         public function favorites(){
             return $this->hasMany('App\Models\Favorite');

@@ -11,7 +11,7 @@ class Favorite extends Model
 
         protected $fillable = [
             'item_id',
-            'person_id'
+            'user_id'
         ];
 
         public function items(){
@@ -19,7 +19,7 @@ class Favorite extends Model
         }
 
         public function pepole(){
-            return $this->belongsTo('App\Models\Person');
+            return $this->belongsTo('App\Models\User');
         }
 
 }

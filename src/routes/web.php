@@ -63,9 +63,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/purchase/:{item_id}',[ItemController::class, 'purchase']);
   
 
-
-    Route::get('/purchase/address/:{item_id}',[ProfileController::class, 'edit']);
-
+    Route::get('/purchase/address/:{item_id}',[ProfileController::class, 'address']);
+    Route::post('/purchase/address/:{item_id}',[ProfileController::class, 'change']);
 });
 
 

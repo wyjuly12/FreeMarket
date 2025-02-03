@@ -42,9 +42,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function book(){
+    public function Persons(){
         return $this->hasOne('App\Models\Person');
     }
+
+    public function Posts(){
+        return $this->hasMany('App\Models\Post');
+    }
+
+    public function Favorites(){
+        return $this->hasMany('App\Models\Favorite');
+    }
+
+
+
+
 
 }
 

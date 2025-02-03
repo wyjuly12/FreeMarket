@@ -11,16 +11,30 @@ class Post extends Model
 
         protected $fillable = [
             'item_id',
-            'person_id',
-            'comment'
+            'user_id',
+            'comment',
+            'create_at'
         ];
+
 
         public function items(){
             return $this->belongsToMany('App\Models\Item')->withTimestamps();
         }
 
+
         public function pepole(){
-            return $this->belongsToMany('App\Models\Person')->withTimestamps();
+            return $this->belongsToMany('App\Models\User')->withTimestamps();
         }
+
+
+        public function getUserId(){
+            return $this->person_id;
+        }
+
+        public function getComment(){
+            return $this->comment;
+        }
+
+
 
 }

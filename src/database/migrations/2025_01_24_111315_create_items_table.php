@@ -19,6 +19,9 @@ class CreateItemsTable extends Migration
             $table->integer('price');
             $table->string('image');
             $table->string('explanation');
+            $table->string('destination_postcode')->nullable();
+            $table->string('destination_address')->nullable();
+            $table->string('destination_buliding')->nullable();
             $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
             $table->integer('sell_flag');
             $table->integer('buy_flag')->nullable();
