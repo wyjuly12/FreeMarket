@@ -42,6 +42,11 @@ class Item extends Model
             return $this->hasMany('App\Models\Post');
         }
 
+        // リレーション(Itemsテーブル→Postsテーブル)
+        public function favorites(){
+            return $this->hasMany('App\Models\Favorite');
+        }
+
         // 機能(商品一覧表示)
         public function scopeGetSale($query , $user_id){
             $query->where('sell_flag', '!=' , $user_id );         
@@ -69,11 +74,6 @@ class Item extends Model
         }
 
 
-
-
-        public function favorites(){
-            return $this->hasMany('App\Models\Favorite');
-        }
 
 
         public function scopeSerchSell($query , $user_id){

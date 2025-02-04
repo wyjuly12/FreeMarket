@@ -67,6 +67,20 @@
 }
 
 
+.content-button__like {
+    display: inline-block;
+    width: 20%;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    color: whitesmoke;
+    background-color: yellowgreen;
+}
+
+
 .content-infomation {
     width: 70%;
     margin-bottom: 20px;
@@ -109,7 +123,7 @@
 }
 
 
-.content-photo {
+.comment-photo {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -117,10 +131,15 @@
     border-radius: 100%;
 }
 
-.content-user {
+.comment-user {
     display: inline-block;
-    margin-left: 40px;
+    width: 70%;
 }
+
+.comment-text {
+    width: 70%;
+}
+
 
 .content-comment_view {
     width: 70%;

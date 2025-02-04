@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
+
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Post;
+
+use App\Models\Favorite;
 use App\Models\Person;
 use App\Models\Category;
 use App\Models\Condition;
-use App\Http\Requests\CommentRequest;
-use Illuminate\Support\Facades\Auth;
+
+
 
 class ItemController extends Controller
 {
@@ -28,25 +33,47 @@ class ItemController extends Controller
     // 商品詳細ページ表示
     public function detail($item_id){ 
   
-        $categories = category::all();
+        $categories = Category::all();
         $item = Item::find($item_id);
 
         return view('item' , compact('item','categories'));
     }
 
-    // コメント送信機能(詳細画面)
+    // マイリスト機能(詳細ページ)
+    public function like(Request $request){
+
+        $item = Item::find($request->item_id);
+        $item_id = $request->item_id;
+        $user_id = Auth::id();
+    
+        $isLiked = $item->favorites()->where('user_id', $user_id)->exists();
+
+        if ($isLiked) {
+            $item->favorites()->where('user_id', $user_id )->delete();
+        } else {
+            $item->favorites()->create(['user_id' => $user_id]);
+        }
+ 
+        return back();
+
+    }
+
+
+    // コメント送信機能(商品詳細ページ)
     public function comment(CommentRequest $request){
 
-        $categories = category::all();
-        $item = Item::find($request->item_id);
-
         $form = new Post();
-        $form->person_id = Auth::id();
+        $form->user_id = Auth::id();
         $form->item_id = $request->item_id;
         $form->comment = $request->comment;
         $form->save();
-        return view('item' , compact('item','categories'));
+
+        return back();
+
     }
+
+
+
 
     // 商品購入ページ表示
     public function purchase($item_id){
@@ -62,6 +89,11 @@ class ItemController extends Controller
         $categories = Category::all();
         return view('exhibition' ,compact('categories','conditons'));
     }
+
+
+
+
+
 
 
 

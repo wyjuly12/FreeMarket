@@ -21,6 +21,17 @@
             @else
             <button class="content-button" type="button"><a href="/purchase/:{{ $item->id }}">購入手続きへ</a></button>
             @endif
+            <div class="content-like">
+                <form action="" method="post">
+                    @csrf
+                    <button class="content-button__like" type="submit">マイリスト</button> 
+                    @if ($item->favorites->count())
+                    <span class="content-text" >お気に入り({{$item->favorites->count()}})</span>
+                    @else
+                    <span class="content-text" >お気に入り(0)</span>
+                    @endif 
+                </form> 
+            </div>
         </div>
         <div class="content-group">
             <h3>商品説明</h3>
@@ -43,12 +54,19 @@
                 <span class="content-condition">{{$item->getCondition()}}</span>
             </div>
             <div class="content-comunication">
-                <img class="content-photo" src="" alt="">
+                @if ($item->posts->count())
+                    <p>コメント(<span>{{$item->posts->count()}}</span>)</p>
+                    @else
+                    <p>コメント(<span>0</span>)</p>
+                @endif    
                 @if($item->posts != null)
+                    <div class="content-comment">
                     @foreach($item->posts as $object)
-                    <div class="content-comment_view">{{$object->getUserId()}}</div>
-                    <div class="content-comment_view">{{$object->getComment()}}</div>
+                        <img class="comment-photo" src="$person->image/No,{{$object->getUserId()}}" alt="">
+                        <p>User:{{$object->getUserId()}}</p> 
+                        <p>{{$object->getComment()}}</p> 
                     @endforeach
+                    </div> 
                 @endif
             </div>
         </div>

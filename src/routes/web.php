@@ -5,6 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 
+
+
+use App\Http\Controllers\PostController;
+
+
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\RegisteredUserController;
 
@@ -33,9 +38,6 @@ Route::get('/login' , [AuthController::class, 'login'] )->name('login');
 Route::get('/register' , [AuthController::class, 'register'] )->name('register');
 
 
-
-   
-
 // 商品一覧＄商品詳細ページ
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/:{item_id}', [ItemController::class, 'detail']);
@@ -51,6 +53,8 @@ Route::middleware('auth')->group(function(){
     Route::post('/sell', [ItemController::class, 'postSell']);
 
 
+
+
     Route::get('/mypage', [ProfileController::class, 'parson']);
     Route::get('/mypage/profile', [ProfileController::class, 'profile']);
     Route::get('/mypage?tab=buy', [ProfileController::class, 'searchBuy']);
@@ -59,6 +63,7 @@ Route::middleware('auth')->group(function(){
 
 
     Route::post('/item/:{item_id}', [ItemController::class, 'comment']);
+    Route::post('/item/:{item_id}', [ItemController::class, 'like']);
 
     Route::get('/purchase/:{item_id}',[ItemController::class, 'purchase']);
   

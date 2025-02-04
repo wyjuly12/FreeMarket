@@ -18,23 +18,22 @@ class Post extends Model
 
 
         public function items(){
-            return $this->belongsToMany('App\Models\Item')->withTimestamps();
+            return $this->belongsTo('App\Models\Item');
         }
 
 
-        public function pepole(){
-            return $this->belongsToMany('App\Models\User')->withTimestamps();
+        public function users(){
+            return $this->belongsTo('App\Models\User');
         }
 
 
         public function getUserId(){
-            return $this->person_id;
+            return $this->user_id;
         }
 
         public function getComment(){
             return $this->comment;
         }
-
 
 
 }
