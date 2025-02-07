@@ -126,15 +126,33 @@
     color: white;
 }
 
-
 .content-comment {
     width: 70%;
-    font-size: xx-small;
     border: 1px solid;
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+.comment-user img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px, solid;
+    border-radius: 100%;
+}
+
+.comment-user span {
+    display: inline-block;
+    align-content: center;
+    margin-left: 10px;
+    font-weight: bolder;
+}
+
+.comment-text {
+    font-size: x-small;
+    margin-left: 20px;
 }
 
 

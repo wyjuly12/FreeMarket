@@ -17,10 +17,9 @@ class Post extends Model
         ];
 
 
-        public function items(){
+        public function item(){
             return $this->belongsTo('App\Models\Item');
         }
-
 
         public function user(){
             return $this->belongsTo('App\Models\User');
@@ -34,9 +33,6 @@ class Post extends Model
         public function getUserName(){
             return $this->user->name;
         }
-
- 
-
 
 
 }

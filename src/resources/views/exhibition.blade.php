@@ -26,8 +26,8 @@
                 <label class="section-title">カテゴリー</label>
                 <div class="category-input">
                     @foreach($categories as $category)
-                    <input type="checkbox" name="category_id" id="category_{{$category->id}}">
-                    <label for="category_{{$category->id}}">{{$category->category}}</label>
+                    <input type="checkbox" name="category_id[]" id="category_id{{$category->id}}" value="{{$category->id}}">
+                    <label for="category_id{{$category->id}}">{{$category->category}}</label>
                     @endforeach
                 </div>
             </div>

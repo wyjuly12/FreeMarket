@@ -8,7 +8,7 @@
 
 <div class="mypage-top">
     <div class="top-image">
-       <img class="top-image" src="" alt="画像"><span>{{ $user->name }}</span>  
+       <img class="top-image" src="{{ asset($person->photo)}}" alt="画像"><span>{{ $user->name }}</span>  
     </div>
     <button class="top-link" type="button"><a href="/mypage/profile" >プロフィールを変更</a></button>
 </div>

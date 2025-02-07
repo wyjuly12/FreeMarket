@@ -24,8 +24,9 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
         $user = User::find($user_id);
+        $person = Person::where('user_id',$user_id)->first();
 
-        return view('mypage',compact('user'));
+        return view('mypage',compact('user','person'));
     }
 
     public function searchBuy(){
@@ -48,13 +49,13 @@ class ProfileController extends Controller
 
 
     // プロフィール編集ページ表示
-    public function profile(Request $request){
+    public function profile(){
 
         $user_id = Auth::id();
         $user = User::find($user_id);
-        $person = Person::find($user_id);
+        $person = Person::where('user_id',$user_id)->first();
         return view('profile' , compact('user','person'));
-  
+   
     }
 
 
@@ -66,16 +67,18 @@ class ProfileController extends Controller
         $dir = 'photos';
         $user_id = Auth::id();
 
-        // $file = $request->file('photo')->getClientOriginalName();
-        $file = 'UserNo.'.$user_id;
-        $request->file('photo')->storeAs('public/'.$dir , $file);
+        if($request->photo != null){
+            $file = 'UserNo.'.$user_id;
+            $request->file('photo')->storeAs('public/'.$dir , $file);
+        }else{
+            $file = '';
+        }
 
         $user = Person::where('user_id',$user_id)->first();
 
         if($user !== null ){
             Person::where('user_id',$user_id)->delete();
         }
-
 
         $form = new person();
         $form->user_id = Auth::id();

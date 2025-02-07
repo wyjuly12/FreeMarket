@@ -59,18 +59,18 @@
                     @else
                     <p>コメント(<span>0</span>)</p>
                 @endif    
-
                 @if($item->posts != null)
+                    @foreach($item->posts as $post)
+                    <div class="content-comment"> 
+                        <div class="comment-user">
+                            <img src="" alt="">
+                            <span calss="comment-user">{{$post->getUserName()}}</span>
+                        </div>
+                        <p calss="comment-text">{{$post->getComment()}}</p>
+                    </div> 
+                    @endforeach                
+                @endif 
 
-                @foreach($item->posts as $post)
-                <div class="content-comment"> 
-                    <p calss="comment-user">{{$post->getUserName()}}</p>
-                    <p calss="comment-text">{{$post->getComment()}}</p>
-                </div> 
-                @endforeach                
-  
-                @endif  
-    
             </div>
         </div>
         <div class="content-group">

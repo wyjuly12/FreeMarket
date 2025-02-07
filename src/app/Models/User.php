@@ -43,13 +43,11 @@ class User extends Authenticatable
     ];
 
 
-
-    
-    public function Persons(){
+    public function persons(){
         return $this->hasOne('App\Models\Person');
     }
 
-    public function Posts(){
+    public function posts(){
         return $this->hasMany('App\Models\Post');
     }
 

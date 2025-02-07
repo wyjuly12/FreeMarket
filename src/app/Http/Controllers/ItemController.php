@@ -73,9 +73,12 @@ class ItemController extends Controller
 
     public function comment(CommentRequest $request){
 
+        $user_id = Auth::id();
+
         $form = new Post();
-        $form->user_id = Auth::id();
+        $form->user_id = $user_id;
         $form->item_id = $request->item_id;
+
         $form->comment = $request->comment;
         $form->save();
 
@@ -130,6 +133,18 @@ class ItemController extends Controller
         $form->sell_flag = Auth::id();
         $form->save();
 
+        $item_id = $form->id;
+        $categories = $request->category_id;
+
+        foreach($categories as $category){
+
+        $form = new Categorize();
+        $form->item_id = $item_id;
+        $form->category_id = $category;
+        $form->save();
+
+        }
+        
         return redirect('/');
 
     }
