@@ -42,6 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
+    
     public function Persons(){
         return $this->hasOne('App\Models\Person');
     }
@@ -50,15 +53,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post');
     }
 
-    public function Favorites(){
+    public function favorites(){
         return $this->hasMany('App\Models\Favorite');
     }
 
-
     public function getUserName(){
         return $this->name;
-    }
-
+        }
 
 
 }

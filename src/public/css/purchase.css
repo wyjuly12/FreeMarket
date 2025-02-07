@@ -79,11 +79,13 @@
 }
 
 .form-input__disable {
-    display: inline-block;
+    display: block;
+    width: 100%;
     height: 40px;
     border: none;
     background-color: white;
 }
+
 
 .form-right {
     width: 30%;
@@ -116,13 +118,9 @@
     text-align: center;
     font-size: large;
     font-weight: bold;
+    color: whitesmoke;
     background-color: tomato;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.form-button a {
-    text-decoration: none;
-    color: whitesmoke;
 }

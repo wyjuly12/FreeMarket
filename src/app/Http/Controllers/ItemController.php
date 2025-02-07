@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\CommentRequest;
 
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Post;
-
 use App\Models\Favorite;
 use App\Models\Person;
 use App\Models\Category;
 use App\Models\Condition;
-
+use App\Models\Categorize;
 
 
 class ItemController extends Controller
@@ -24,10 +24,20 @@ class ItemController extends Controller
     public function index(Request $request){
 
         $user_id = Auth::id();
+        $user = User::find($user_id);
         $keyword = $request->keyword;
         $items = Item::getSale($user_id)->searchWord($keyword)->get();
 
-        return view('index' , compact('items'));
+        return view('index' , compact('items','user'));
+    }
+
+    // マイリスト表示
+    public function list(){
+
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+
+        return view('mylist', compact('user'));
     }
 
     // 商品詳細ページ表示
@@ -54,12 +64,13 @@ class ItemController extends Controller
             $item->favorites()->create(['user_id' => $user_id]);
         }
  
-        return back();
+        return back(); 
 
     }
 
 
     // コメント送信機能(商品詳細ページ)
+
     public function comment(CommentRequest $request){
 
         $form = new Post();
@@ -73,14 +84,24 @@ class ItemController extends Controller
     }
 
 
-
-
     // 商品購入ページ表示
     public function purchase($item_id){
 
-        $person = person::find(Auth::id());
+        $person = person::where('user_id',Auth::id())->first();
         $item = Item::find($item_id);
+
         return view('purchase', compact('item','person'));
+    }
+
+
+    //商品購入機能(商品購入ページ)
+    public function procedure(Request $request,$item_id){
+
+        $form = $request->all();
+        Item::find($item_id)->update($form);
+        
+        return redirect('/');
+
     }
 
     // 商品出品ページ表示
@@ -91,27 +112,23 @@ class ItemController extends Controller
     }
 
 
-
-
-
-
-
-
     //出品機能(商品出品ページ)
     public function postSell(Request $request){
 
-        $item = Item::find($request->item_id);
-
         $dir = 'images';
-     
-    
+        $dateStamp = date('Ymd_His');
+
+        $file = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/'.$dir , $dateStamp.'_'.$file);
+
         $form = new Item();
-        $form->goods = $goods->price;
+        $form->goods = $request->goods;
         $form->price = $request->price;
-        $form->image = 
-        $form->explanation = $request->condition;
-        $form->condition_id = $request->condition;
+        $form->image =  'storage/'.$dir.'/'.$dateStamp.'_'.$file;
+        $form->explanation = $request->explanation;
+        $form->condition_id = $request->condition_id;
         $form->sell_flag = Auth::id();
+        $form->save();
 
         return redirect('/');
 

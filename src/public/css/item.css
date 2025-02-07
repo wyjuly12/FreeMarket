@@ -23,6 +23,10 @@
     margin: 50px auto;
 }
 
+.form {
+    width: 100%;
+}
+
 .content-group {
     margin-bottom: 50px;
 }
@@ -123,29 +127,16 @@
 }
 
 
-.comment-photo {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: solid, 1px;
-    border-radius: 100%;
-}
-
-.comment-user {
-    display: inline-block;
+.content-comment {
     width: 70%;
+    font-size: xx-small;
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.comment-text {
-    width: 70%;
-}
-
-
-.content-comment_view {
-    width: 70%;
-    text-align: left;
-    font-size: small;
-}
 
 .content-comment__input {
     display: block;

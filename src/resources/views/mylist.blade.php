@@ -12,14 +12,9 @@
     </ul>
 </div>
 <div class="item-content" >
-    @foreach($items as $item)
-    <div class="content-group">
-        <a href="/item/:{{$item->id}}"><img class="content-image" src="{{ $item->image }}" alt="商品画像"></a>
-        <span class="content-name">{{ $item->goods }}</span>
-        @if($item->buy_flag != null)
-            <span class="content-flag">【sold】</span>
-        @endif
-    </div> 
-    @endforeach 
+        @foreach($user->favorites as $favorite)
+            <a href="/item/:{{$favorite->getItemId()}}"><img class="content-image" src="{{ $favorite->getItemImage() }}" alt="商品画像"></a>
+            <span class="content-name">{{ $favorite->getItemName() }}</span>
+        @endforeach
 </div>
 @endsection

@@ -22,18 +22,21 @@ class Post extends Model
         }
 
 
-        public function users(){
+        public function user(){
             return $this->belongsTo('App\Models\User');
         }
 
 
-        public function getUserId(){
-            return $this->user_id;
-        }
-
         public function getComment(){
             return $this->comment;
         }
+
+        public function getUserName(){
+            return $this->user->name;
+        }
+
+ 
+
 
 
 }

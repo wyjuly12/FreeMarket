@@ -10,44 +10,44 @@
     <div class="form-title">
         <h2>プロフィール設定</h2>
     </div>
-    <form action="/" method="post">
+    <form action="/mypage/profile" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="form-image" enctype="multipart/form-data">
-            <output class="form-image__out" id="file-output">
-                <img src="{{ asset('/image/Bag.jpg') }}" alt="プロフィール画像" >
+        <div class="form-image" enctype="multipart/form-data" >
+            <output class="form-image__out" >
+                <img class="form-image__out" src="" id="file-output" >
             </output>
-            <input class="form-image__in" type="file" id="file-input" name="photo" onchange="fileOutput()"></input>
+            <input class="form-image__in" type="file" id="file-input" name="photo" onchange="fileOutput(photo)"></input>
             <button class="form-image__btn" type="button" id="file-button" onclick="clickUpload()">画像を選択する</button>
-            @error('')
-            <p class="form-error"></p>
+            @error('photo')
+            <p class="form-error">{{$errors->first('photo')}}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">ユーザー名</label>
-            <input class="form-input" type="text" name="name" value="">
-            @error('')
-            <p class="form-error"></p>
+            <input class="form-input" type="text" name="name" value="{{old('name')}}" placeholder="{{$user->name}}">
+            @error('name')
+            <p class="form-error">{{$errors->first('name')}}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">郵便番号</label>
-            <input class="form-input" type="text" name="postcode" value="">
-            @error('')
-            <p class="form-error"></p>
+            <input class="form-input" type="text" name="postcode" value="{{old('postcode')}}" placeholder="">
+            @error('postcode')
+            <p class="form-error">{{$errors->first('postcode')}}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">住所</label>
-            <input class="form-input" type="text" name="address" value="">
-            @error('')
-            <p class="form-error"></p>
+            <input class="form-input" type="text" name="address" value="{{old('address')}}" placeholder="">
+            @error('address')
+            <p class="form-error">{{$errors->first('address')}}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">建物名</label>
-            <input class="form-input" type="text" name="building" value="">
-            @error('')
-            <p class="form-error"></p>
+            <input class="form-input" type="text" name="building" value="{{old('building')}}" placeholder="">
+            @error('building')
+            <p class="form-error">{{$errors->first('building')}}</p>
             @enderror
         </div>
         <div class="from-group">
@@ -60,6 +60,7 @@
 
 
 <script>
+
     function clickUpload(){
 
         const button = document.getElementById("file-button");
@@ -72,24 +73,14 @@
         }, false);
     }
 
-    document.getElementById('file-input').onchange = function(event){
-                document.getElementById('file-output').innerHTML = '';
 
-                var files = event.target.files;
+    function fileOutput(photo){
 
-                for (var i = 0, f; f = files[i]; i++) {
-                var reader = new FileReader;
-                reader.readAsDataURL(f);
-
-                reader.onload = (function(theFile) {
-                    return function (e) {
-                        var div = document.createElement('div');
-                        div.className = 'reader_file';
-                        div.innerHTML += '<img class="reader_image" src="' + e.target.result + '" />';
-                        document.getElementById('file-output').insertBefore(div, null);
-                    }
-                })(f);
-            }
-        };
+        var fileData = new FileReader();
+        fileData.onload = (function(){
+            document.getElementById('file-output').src = fileData.result;
+        });
+        fileData.readAsDataURL(photo.files[0]);
+    }
 
 </script>

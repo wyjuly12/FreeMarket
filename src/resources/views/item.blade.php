@@ -8,7 +8,7 @@
 
 <div class="item-content">
     <div class="content-left">
-        <img class="content-image" src="{{$item->image}}" alt="商品画像">
+        <img class="content-image" src="{{ asset($item->image) }}" alt="商品画像">
     </div>
     <div class="content-right">
         <div class="content-group">
@@ -59,15 +59,18 @@
                     @else
                     <p>コメント(<span>0</span>)</p>
                 @endif    
+
                 @if($item->posts != null)
-                    <div class="content-comment">
-                    @foreach($item->posts as $object)
-                        <img class="comment-photo" src="$person->image/No,{{$object->getUserId()}}" alt="">
-                        <p>User:{{$object->getUserId()}}</p> 
-                        <p>{{$object->getComment()}}</p> 
-                    @endforeach
-                    </div> 
-                @endif
+
+                @foreach($item->posts as $post)
+                <div class="content-comment"> 
+                    <p calss="comment-user">{{$post->getUserName()}}</p>
+                    <p calss="comment-text">{{$post->getComment()}}</p>
+                </div> 
+                @endforeach                
+  
+                @endif  
+    
             </div>
         </div>
         <div class="content-group">

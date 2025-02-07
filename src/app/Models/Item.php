@@ -14,9 +14,8 @@ class Item extends Model
             'price',
             'image',
             'explanation',
-            'destination_postcode',
-            'destination_address',
-            'destination_address',
+            'postcode',
+            'address',
             'condition_id',
             'sell_flag',
             'buy_flag'
@@ -52,13 +51,14 @@ class Item extends Model
             $query->where('sell_flag', '!=' , $user_id );         
             }
 
+
         // 機能(キーワード検索)
         public function scopeSearchWord($query , $keyword){
             if(!empty($keyword)){
                 $query->where('goods','LIKE','%'.$keyword.'%');
             }
         }
-        
+
         //機能(カテゴリ検索)
         public function checkCategory($category,$item){
 
@@ -73,18 +73,6 @@ class Item extends Model
             }
         }
 
-
-
-
-        public function scopeSerchSell($query , $user_id){
-            $query->where('sell_flag', '=' , $user_id);
-        }
-
-        public function scopeSerchBuy($query , $user_id){
-            $query->where('buy_flag', '=' , $user_id);
-        }
-
-        
 
 
 
