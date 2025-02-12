@@ -16,21 +16,21 @@
             <label for="" class="form-label">郵便番号</label>
             <input class="form-input" type="text" name="postcode" value="{{ old('postcode') }}">
             @error('postcode')
-            <p class="form-error">{{$errors->first('postcode')}}</p>
+            <span class="form-error">{{$errors->first('postcode')}}</span>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">住所</label>
             <input class="form-input" type="text" name="address" value="{{ old('address') }}">
             @error('address')
-            <p class="form-error">{{$errors->first('address')}}</p>
+            <span class="form-error">{{$errors->first('address')}}</span>
             @enderror
         </div>
         <div class="form-group">
             <label for="" class="form-label">建物名</label>
             <input class="form-input" type="text" name="building" value="{{ old('building') }}">
             @error('building')
-            <p class="form-error" >{{$errors->first('building')}}</p>
+            <span class="form-error" >{{$errors->first('building')}}</span>
             @enderror
         </div>
         <div class="from-group">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ExhibitionRequest;
 
 use App\Models\User;
 use App\Models\Item;
@@ -36,8 +37,9 @@ class ItemController extends Controller
 
         $user_id = Auth::id();
         $user = User::find($user_id);
+        $favorites = Favorite::where('user_id',$user_id)->get();
 
-        return view('mylist', compact('user'));
+        return view('index', compact('favorites'));
     }
 
     // 商品詳細ページ表示
@@ -55,6 +57,7 @@ class ItemController extends Controller
         $item = Item::find($request->item_id);
         $item_id = $request->item_id;
         $user_id = Auth::id();
+
     
         $isLiked = $item->favorites()->where('user_id', $user_id)->exists();
 
@@ -64,7 +67,7 @@ class ItemController extends Controller
             $item->favorites()->create(['user_id' => $user_id]);
         }
  
-        return back(); 
+        return back();
 
     }
 
@@ -116,7 +119,7 @@ class ItemController extends Controller
 
 
     //出品機能(商品出品ページ)
-    public function postSell(Request $request){
+    public function postSell(ExhibitionRequest $request){
 
         $dir = 'images';
         $dateStamp = date('Ymd_His');

@@ -97,14 +97,6 @@
     box-sizing: border-box;
 }
 
-
-
-
-
-
-
-
-
 .form-button button {
     display: block;
     margin: 0 auto;
@@ -119,4 +111,8 @@
     color: snow;
     margin-top: 100px;
     cursor: pointer;
+}
+
+.form-error {
+    color: red;
 }

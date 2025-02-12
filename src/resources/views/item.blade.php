@@ -18,11 +18,12 @@
             <button class="content-button__disabled"disabled="disabled">ログイン後に購入手続きができます</button>          
             @elseif($item->buy_flag != null)
             <button class="content-button__disabled"disabled="disabled">この商品は購入されました</button>
+            @elseif($item->sell_flag != null)
             @else
             <button class="content-button" type="button"><a href="/purchase/:{{ $item->id }}">購入手続きへ</a></button>
             @endif
             <div class="content-like">
-                <form action="" method="post">
+                <form action="/item/:{{$item->id}}/like" method="post">
                     @csrf
                     <button class="content-button__like" type="submit">マイリスト</button> 
                     @if ($item->favorites->count())
@@ -54,6 +55,7 @@
                 <span class="content-condition">{{$item->getCondition()}}</span>
             </div>
             <div class="content-comunication">
+                <label class="content-label" for="">コメント一覧</label>
                 @if ($item->posts->count())
                     <p>コメント(<span>{{$item->posts->count()}}</span>)</p>
                     @else
@@ -68,7 +70,7 @@
                         </div>
                         <p calss="comment-text">{{$post->getComment()}}</p>
                     </div> 
-                    @endforeach                
+                    @endforeach
                 @endif 
 
             </div>

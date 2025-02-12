@@ -59,6 +59,7 @@ class Item extends Model
             }
         }
 
+
         //機能(カテゴリ検索)
         public function checkCategory($category,$item){
 

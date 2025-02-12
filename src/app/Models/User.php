@@ -43,7 +43,7 @@ class User extends Authenticatable
     ];
 
 
-    public function persons(){
+    public function person(){
         return $this->hasOne('App\Models\Person');
     }
 
@@ -55,8 +55,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Favorite');
     }
 
-    public function getUserName(){
-        return $this->name;
+
+
+    public function getPersonPhoto(){
+        return $this->person->photo;
         }
 
 

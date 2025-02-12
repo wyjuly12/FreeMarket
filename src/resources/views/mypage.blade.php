@@ -15,22 +15,21 @@
 
 <div class="mypage-menu">
     <ul class="menu-list">
-        <li class="menu-link"><a href="/mypage?tab=sell">出品した商品</a></li>
-        <li class="menu-link"><a href="/mypage?tab=buy">購入した商品</a></li>
+        <li class="menu-link"><a href="/mypage/sell">出品した商品</a></li>
+        <li class="menu-link"><a href="/mypage/buy">購入した商品</a></li>
     </ul>
 </div>
 <div class="item-content">
-    <div class="content-group">
         @if(isset($items)) 
-        @foreach($items as $item)
-            <a href="/item/:{{$item->id}}"><img class="content-image" src="{{ $favorite->image }}" alt="商品画像"></a>
-            <span class="content-name">{{ $item->goods }}</span>
-        @endforeach
+            @foreach($items as $item)
+            <div class="content-group">
+                <a href="/item/:{{$item->id}}"><img class="content-image" src="{{ asset($item->image) }}" alt="商品画像"></a>
+                <span class="content-name">{{ $item->goods }}</span>
+                @if($item->buy_flag != null)
+                    <span class="content-flag">【sold】</span>
+                @endif
+                </div> 
+            @endforeach
         @endif
-    </div> 
-    
-
 </div>
-
-
 @endsection

@@ -24,20 +24,20 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-        'name' => 'required',
-        'postcode' => 'required',
-        'address' => 'required',
-        'building' => 'required',
+            'name' => 'required',
+            'postcode' => 'required',
+            'address' => 'required',
+            'building' => 'required',
         ];
     }
 
     public function messages()
         {
         return [
-        'name.required' => 'お名前を入力してください',
-        'postcode.required' => '郵便番号を入力してください',
-        'address.required' => '住所を入力してください',
-        'building.required' => '建物名を入力してください',
+            'name.required' => 'お名前を入力してください',
+            'postcode.required' => '郵便番号を入力してください',
+            'address.required' => '住所を入力してください',
+            'building.required' => '建物名を入力してください',
         ];
         }
 

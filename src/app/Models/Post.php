@@ -25,14 +25,17 @@ class Post extends Model
             return $this->belongsTo('App\Models\User');
         }
 
+        public function getUserName(){
+            return $this->user->name;
+        }
 
         public function getComment(){
             return $this->comment;
         }
 
-        public function getUserName(){
-            return $this->user->name;
-        }
+
+
+
 
 
 }

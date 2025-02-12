@@ -32,18 +32,22 @@ class ProfileController extends Controller
     public function searchBuy(){
 
         $user_id = Auth::id();
+        $user = User::find($user_id);
         $items = Item::where('buy_flag',$user_id)->get();
-
-        return view('myprofile',compact('items'));
+        $person = Person::where('user_id',$user_id)->first();
+        
+        return view('mypage',compact('items','person','user'));
      
     }
 
     public function searchSell(){
 
         $user_id = Auth::id();
+        $user = User::find($user_id);
         $items = Item::where('sell_flag',$user_id)->get();
+        $person = Person::where('user_id',$user_id)->first();
         
-        return view('myprofile',compact('items'));
+        return view('mypage',compact('items','person','user'));
 
     }
 
@@ -59,19 +63,16 @@ class ProfileController extends Controller
     }
 
 
-
-
     // プロフィール編集機能
     public function edit(AddressRequest $request){
 
-        $dir = 'photos';
         $user_id = Auth::id();
+        $dir = 'photos';
+        $file = 'User'.$user_id;
+
 
         if($request->photo != null){
-            $file = 'UserNo.'.$user_id;
             $request->file('photo')->storeAs('public/'.$dir , $file);
-        }else{
-            $file = '';
         }
 
         $user = Person::where('user_id',$user_id)->first();
@@ -100,17 +101,17 @@ class ProfileController extends Controller
     // 住所変更ページ表示
     public function address($item_id){
 
-        $person = Person::where("user_id", Auth::id());
+        $user_id = Auth::id();
+        $person = Person::where("user_id", $user_id);
         $item = Item::find($item_id);
+        
         return view('address' ,compact('person','item'));
     }
 
     // 配送先変更
-    public function change(Request  $request , $item_id){
+    public function change(AddressRequest $request,$item_id){
 
         $user_id = Auth::id();
-
-        $person = Person::where("user_id", $user_id)->first();
         $item = Item::find($item_id);
 
         $form = $request->all();
@@ -118,7 +119,6 @@ class ProfileController extends Controller
         person::where("user_id", $user_id)->update($form);
 
         return redirect()->route('purchase',[$item]);
-        
     }
 
 
