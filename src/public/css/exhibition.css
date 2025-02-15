@@ -116,3 +116,37 @@
 .form-error {
     color: red;
 }
+
+@media screen and (max-width: 768px) {
+
+    .exhibition-form {
+        width: 60%;
+        margin: 0px auto;
+    }
+
+    .form-image__out img {
+        display: block;
+        align-content: center;
+        margin: 0px, auto;
+        width: 150px;
+        height: 150px;
+        border: 1px solid;
+        border-radius: 5px;
+    }
+
+    .form-image__btn {
+        display: block;
+        width: 150px;
+        height: 30px;
+        margin-top: 10px;
+        font-weight: bolder;
+        text-align: center;
+        color: tomato;
+        border: 1px, solid, tomato;
+        background-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+}

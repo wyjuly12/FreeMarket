@@ -68,10 +68,10 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
         $dir = 'photos';
-        $file = 'User'.$user_id;
+        $file = '';
 
-
-        if($request->photo != null){
+        if($request->photo !== null ){
+            $file = $request->file('photo')->getClientOriginalName();
             $request->file('photo')->storeAs('public/'.$dir , $file);
         }
 

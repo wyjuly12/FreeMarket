@@ -124,3 +124,32 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .purchase-form {
+        display: flex;
+        justify-content: space-around;
+        width: 90%;
+        margin: 0px auto;
+    }
+
+    .form-left {
+        width: 55%;
+        margin-right: 10%;
+    }
+
+    .form-image {
+        display: block;
+        width: 100px;
+        height: 100px;
+        margin: 0, auto;
+        margin-bottom: 50px;
+        border-radius: 5px;
+    }
+
+    .form-right {
+        width: 45%;
+    }
+}

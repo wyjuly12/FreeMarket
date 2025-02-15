@@ -15,7 +15,7 @@
         @csrf
         <div class="form-image">
             <output class="form-image__out" >
-                <img class="form-image__out"  id="file-output" >
+                <img class="form-image__out"  id="file-output">
             </output>
             <input class="form-image__in" type="file" id="file-input" name="image" onchange="fileOutput(image)"></input>
             <button class="form-image__btn" type="button" id="file-button" onclick="clickUpload()">画像を選択する</button>

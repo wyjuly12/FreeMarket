@@ -18,7 +18,6 @@
             <button class="content-button__disabled"disabled="disabled">ログイン後に購入手続きができます</button>          
             @elseif($item->buy_flag != null)
             <button class="content-button__disabled"disabled="disabled">この商品は購入されました</button>
-            @elseif($item->sell_flag != null)
             @else
             <button class="content-button" type="button"><a href="/purchase/:{{ $item->id }}">購入手続きへ</a></button>
             @endif

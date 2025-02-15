@@ -68,7 +68,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
 }
 
 .content-group {
@@ -92,4 +92,52 @@
 .content-flag {
     display: inline-block;
     color: red;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .top-image {
+        display: inline;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0px auto;
+    }
+
+
+    .top-image img {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        border-radius: 100%;
+    }
+
+    .top-image span {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 0px;
+        font-size: large;
+        font-weight: bolder;
+    }
+
+    .top-link {
+        display: inline-block;
+        width: 140px;
+        height: 40px;
+        font-weight: bolder;
+        color: tomato;
+        border: 1px, solid, tomato;
+        background-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .top-link a {
+        text-decoration: none;
+        color: tomato;
+    }
+
+
 }

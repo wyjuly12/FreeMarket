@@ -7,9 +7,15 @@
 @section('content')
 
 <div class="mypage-top">
+    @if(isset($person))
     <div class="top-image">
        <img class="top-image" src="{{ asset($person->photo)}}" alt="画像"><span>{{ $user->name }}</span>  
     </div>
+    @else
+    <div class="top-image">
+       <img class="top-image" src="" alt=""><span>{{ $user->name }}</span>  
+    </div> 
+    @endif
     <button class="top-link" type="button"><a href="/mypage/profile" >プロフィールを変更</a></button>
 </div>
 

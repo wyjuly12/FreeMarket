@@ -184,3 +184,88 @@
     background-color: tomato;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .item-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .content-image {
+        display: block;
+        margin: 0px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 5px;
+    }
+
+    .content-button {
+        display: block;
+        width: 90%;
+        height: 40px;
+        text-align: center;
+        font-size: large;
+        font-weight: bold;
+        background-color: tomato;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .content-button a {
+        display: block;
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+
+    .content-button__disabled {
+        display: block;
+        width: 90%;
+        height: 40px;
+        text-align: center;
+        font-size: large;
+        font-weight: bold;
+        background-color: gainsboro;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+
+    .content-button__like {
+        display: inline-block;
+        width: 30%;
+        height: 30px;
+        margin-top: 10px;
+        margin-right: 20px;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        color: whitesmoke;
+        background-color: yellowgreen;
+    }
+
+    .content-comment {
+        width: 90%;
+        border: 1px solid;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .content-comment__input {
+        display: block;
+        width: 90%;
+        padding: 5px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+
+}

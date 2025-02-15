@@ -78,8 +78,13 @@
 }
 
 
-
-
 .form-error {
     color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-form {
+        width: 60%;
+        margin: 0px auto;
+    }
 }

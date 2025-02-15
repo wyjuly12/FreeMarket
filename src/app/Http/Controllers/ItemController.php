@@ -122,15 +122,17 @@ class ItemController extends Controller
     public function postSell(ExhibitionRequest $request){
 
         $dir = 'images';
-        $dateStamp = date('Ymd_His');
-
         $file = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/'.$dir , $dateStamp.'_'.$file);
+        $path = 'storage/'.$dir.'/'.$file;
+
+        $request->session()->flash('imagePath', $path);
+
+        $request->file('image')->storeAs('public/'.$dir , $file);
 
         $form = new Item();
         $form->goods = $request->goods;
         $form->price = $request->price;
-        $form->image =  'storage/'.$dir.'/'.$dateStamp.'_'.$file;
+        $form->image =  $path;
         $form->explanation = $request->explanation;
         $form->condition_id = $request->condition_id;
         $form->sell_flag = Auth::id();

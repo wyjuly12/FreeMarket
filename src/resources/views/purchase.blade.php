@@ -22,11 +22,11 @@
                 <h3 class="form-title">支払方法</h3>
                 <select class="form-select" id="select" for="payment" name="payment" onchange="showSelect()" >
                     <option id="payment" hidden>支払方法を選択してください</option>
-                    <option id="payment" value="1" >コンビニ支払い</option>
-                    <option id="payment" value="2">カード支払い</option>
+                    <option id="payment" value="1" {{ old('payment') == 1 ? 'selected' : '' }}>コンビニ支払い</option>
+                    <option id="payment" value="2" {{ old('payment') == 2 ? 'selected' : '' }}>カード支払い</option>
                 </select> 
                 @error('payment')
-                <p class="form-error">{{$errors->first('payment')}}</p>
+                    <p class="form-error">{{$errors->first('payment')}}</p>
                 @enderror
             </div>
             <div class="form-group">

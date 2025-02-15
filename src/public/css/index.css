@@ -18,7 +18,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
 }
 
 .content-group {
@@ -50,47 +50,5 @@
         width: 100%;
         margin-top: 0px 50px;
         border-bottom: 2px solid;
-    }
-
-    .menu-link {
-        display: inline-block;
-        text-align: center;
-        margin-right: 50px;
-    }
-
-    .menu-link a {
-        text-decoration: none;
-    }
-
-    .item-content {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        width: 90%;
-    }
-
-    .content-group {
-        width: 150px;
-        height: 160px;
-        margin: 30px 30px;
-    }
-
-    .content-image {
-        display: block;
-        width: 150px;
-        height: 150px;
-        box-sizing: border-box;
-    }
-
-    .content-title {
-        display: inline-block;
-        margin-top: 10px;
-        font-weight: bold;
-    }
-
-    .content-sold {
-        display: inline-block;
-        margin-top: 10px;
-        color: red;
     }
 }
