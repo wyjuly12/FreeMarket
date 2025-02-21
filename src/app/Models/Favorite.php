@@ -25,10 +25,6 @@ class Favorite extends Model
         }
 
 
-
-        // 仮↓
-
-
         public function getItemId(){
             return $this->item->id;
         }
@@ -39,6 +35,10 @@ class Favorite extends Model
 
         public function getItemImage(){
             return $this->item->image;
+        }
+
+        public function getItemSold(){
+            return $this->item->buy_flag;
         }
 
 

@@ -26,6 +26,7 @@ class AddressRequest extends FormRequest
         return [
             'name' => 'required',
             'postcode' => 'required',
+            'postcode' => 'regex:/[0-9]{3}-[0-9]{4}$/',
             'address' => 'required',
             'building' => 'required',
         ];
@@ -36,6 +37,7 @@ class AddressRequest extends FormRequest
         return [
             'name.required' => 'お名前を入力してください',
             'postcode.required' => '郵便番号を入力してください',
+            'postcode.regex' => '郵便番号は‐(ハイフン)を含む数値7桁で入力してください',
             'address.required' => '住所を入力してください',
             'building.required' => '建物名を入力してください',
         ];

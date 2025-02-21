@@ -14,6 +14,15 @@
     text-decoration: none;
 }
 
+.item-notice {
+    font-size: larger;
+    font-weight: bolder;
+    align-content: center;
+    padding: 5px;
+    color: aliceblue;
+    background-color: sandybrown;
+}
+
 .item-content {
     display: flex;
     flex-wrap: wrap;

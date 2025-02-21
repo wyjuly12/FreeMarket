@@ -54,7 +54,6 @@
     </script>
 
     <main>
-
         @yield('content')
     </main>
 

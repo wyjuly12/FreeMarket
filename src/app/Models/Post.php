@@ -12,6 +12,7 @@ class Post extends Model
         protected $fillable = [
             'item_id',
             'user_id',
+            'person_id',
             'comment',
             'create_at'
         ];
@@ -25,17 +26,20 @@ class Post extends Model
             return $this->belongsTo('App\Models\User');
         }
 
+        public function person(){
+            return $this->belongsTo('App\Models\Person');
+        }
+
         public function getUserName(){
             return $this->user->name;
+        }
+
+        public function getPersonPhoto(){
+            return $this->person->photo;
         }
 
         public function getComment(){
             return $this->comment;
         }
-
-
-
-
-
 
 }

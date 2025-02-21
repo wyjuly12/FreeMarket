@@ -14,8 +14,6 @@ class Item extends Model
             'price',
             'image',
             'explanation',
-            'postcode',
-            'address',
             'condition_id',
             'sell_flag',
             'buy_flag'
@@ -45,6 +43,13 @@ class Item extends Model
         public function favorites(){
             return $this->hasMany('App\Models\Favorite');
         }
+
+        // リレーション(Itemsテーブル→Ordersテーブル)
+        public function order(){
+            return $this->hasOne('App\Models\Order');
+        }
+
+
 
         // 機能(商品一覧表示)
         public function scopeGetSale($query , $user_id){

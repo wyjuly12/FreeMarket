@@ -10,8 +10,10 @@
         <li class="menu-link"><a href="/">おすすめ</a></li>
         <li class="menu-link"><a href="/mylist">マイリスト</a></li>
     </ul>
-    </div>
-
+</div>
+@if(session('message'))
+    <div class="item-notice">{{session('message')}}</div>
+@endif
 <div class="item-content" >
     @if(isset($items))
         @foreach($items as $item)
@@ -29,6 +31,9 @@
         <div class="content-group" >
             <a href="/item/:{{$favorite->getItemId()}}"><img class="content-image" src="{{ $favorite->getItemImage() }}" alt="商品画像"></a>
             <span class="content-name">{{ $favorite->getItemName() }}</span>
+            @if($favorite->getItemSold() != null)
+                <span class="content-flag">【sold】</span>
+            @endif
         </div>
         @endforeach
     @endif

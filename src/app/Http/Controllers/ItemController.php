@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\PurchaseRequest;
 
 use App\Models\User;
 use App\Models\Item;
@@ -16,6 +17,7 @@ use App\Models\Person;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Categorize;
+use App\Models\Order;
 
 
 class ItemController extends Controller
@@ -58,16 +60,17 @@ class ItemController extends Controller
         $item_id = $request->item_id;
         $user_id = Auth::id();
 
-    
         $isLiked = $item->favorites()->where('user_id', $user_id)->exists();
 
         if ($isLiked) {
             $item->favorites()->where('user_id', $user_id )->delete();
+            $like = "ture";
         } else {
             $item->favorites()->create(['user_id' => $user_id]);
+            $like = "false";
         }
  
-        return back();
+        return back()->with(compact('like'));
 
     }
 
@@ -77,15 +80,17 @@ class ItemController extends Controller
     public function comment(CommentRequest $request){
 
         $user_id = Auth::id();
+        $message = 'コメントを送信しました';
 
         $form = new Post();
         $form->user_id = $user_id;
+        $form->person_id = $user_id;
         $form->item_id = $request->item_id;
 
         $form->comment = $request->comment;
         $form->save();
 
-        return back();
+        return back()->with(compact('message'));
 
     }
 
@@ -101,12 +106,24 @@ class ItemController extends Controller
 
 
     //商品購入機能(商品購入ページ)
-    public function procedure(Request $request,$item_id){
+    public function procedure(PurchaseRequest $request,$item_id){
 
-        $form = $request->all();
-        Item::find($item_id)->update($form);
+        $user_id = Auth::id();
+        $message = '商品購入が完了しました';
         
-        return redirect('/');
+        Order::create([
+            'item_id' => $item_id,
+            'user_id' => $user_id,
+            'postcode' => $request->postcode,
+            'address' => $request->address, 
+            'payment' => $request->payment
+        ]);
+
+        Item::where('id',$item_id)->update([
+            'buy_flag' => $user_id,
+        ]);
+
+        return redirect('/')->with(compact('message'));
 
     }
 
@@ -124,6 +141,7 @@ class ItemController extends Controller
         $dir = 'images';
         $file = $request->file('image')->getClientOriginalName();
         $path = 'storage/'.$dir.'/'.$file;
+        $message = '商品出品が完了しました';
 
         $request->session()->flash('imagePath', $path);
 
@@ -150,7 +168,7 @@ class ItemController extends Controller
 
         }
         
-        return redirect('/');
+        return redirect('/')->with(compact('message'));
 
     }
 

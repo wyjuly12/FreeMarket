@@ -1,3 +1,12 @@
+.item-notice {
+    font-size: larger;
+    font-weight: bolder;
+    align-content: center;
+    padding: 5px;
+    color: aliceblue;
+    background-color: sandybrown;
+}
+
 .item-content {
     display: flex;
     justify-content: space-between;
@@ -73,16 +82,40 @@
 
 .content-button__like {
     display: inline-block;
-    width: 20%;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
+    align-content: center;
     border: none;
-    font-weight: bold;
-    border-radius: 5px;
-    color: whitesmoke;
-    background-color: yellowgreen;
+    background-color: white;
+    background: url(../images/マイリストアイコン_白.svg) no-repeat;
+    background-size: cover;
 }
+
+.content-button__dislike {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+    align-content: center;
+    border: none;
+    background-color: white;
+    background: url(../images/マイリストアイコン_黒.svg) no-repeat;
+    background-size: cover;
+}
+
+.content-button__comment {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: url(../images/コメントアイコン.svg) no-repeat;
+    background-size: cover;
+}
+
 
 
 .content-infomation {
@@ -92,7 +125,9 @@
 
 .content-label {
     display: inline-block;
+    font-weight: bolder;
     margin-right: 40px;
+    margin-bottom: 10px;
 }
 
 .category-output span {
@@ -128,10 +163,8 @@
 
 .content-comment {
     width: 70%;
-    border: 1px solid;
     padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -159,7 +192,7 @@
 .content-comment__input {
     display: block;
     width: 70%;
-    padding: 5px;
+    padding: 2px;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -239,23 +272,42 @@
 
     .content-button__like {
         display: inline-block;
-        width: 30%;
+        width: 30px;
         height: 30px;
         margin-top: 10px;
-        margin-right: 20px;
+        margin-right: 10px;
+        align-content: center;
         border: none;
-        font-weight: bold;
-        border-radius: 5px;
-        color: whitesmoke;
-        background-color: yellowgreen;
+        background-color: white;
+        background: url(../images/マイリストアイコン_白.svg) no-repeat;
+        background-size: cover;
+    }
+
+    .content-button__dislike {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        margin-right: 10px;
+        align-content: center;
+        border: none;
+        background-color: white;
+        background: url(../images/マイリストアイコン_黒.svg) no-repeat;
+        background-size: cover;
+    }
+
+    .content-button__comment {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 10px;
+        background: url(../images/コメントアイコン.svg) no-repeat;
+        background-size: cover;
     }
 
     .content-comment {
         width: 90%;
-        border: 1px solid;
-        padding: 5px;
-        margin-bottom: 10px;
-        border-radius: 5px;
         box-sizing: border-box;
     }
 

@@ -68,35 +68,50 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
         $dir = 'photos';
-        $file = '';
+        $file = 'user'.$user_id.'.jpg';
+        $message = "プロフィールを更新しました";
 
         if($request->photo !== null ){
-            $file = $request->file('photo')->getClientOriginalName();
             $request->file('photo')->storeAs('public/'.$dir , $file);
         }
 
         $user = Person::where('user_id',$user_id)->first();
 
         if($user !== null ){
-            Person::where('user_id',$user_id)->delete();
+            Person::where('user_id',$user_id)->update(
+                [
+                 'postcode' => $request->postcode,
+                 'address' => $request->address,
+                 'building' => $request->building,
+                 'photo' =>  'storage/'.$dir.'/'.$file
+                 ]
+                );
+            User::where('id',$user_id)->update(
+               ['name' => $request->name] 
+            );
+        }
+        
+        if($user == null){
+            person::create(
+                [
+                'user_id' => Auth::id(),
+                'postcode' => $request->postcode,
+                'address' => $request->address,
+                'building' => $request->building,
+                'photo' =>  'storage/'.$dir.'/'.$file,
+                ]
+            );
+
+            User::where('id',$user_id)->update(
+                [
+                'name' => $request->name
+                ] 
+            );
         }
 
-        $form = new person();
-        $form->user_id = Auth::id();
-        $form->postcode = $request->postcode;
-        $form->address = $request->address;
-        $form->building = $request->building;
-        $form->photo =  'storage/'.$dir.'/'.$file;
-        $form->save();
-
-        $form = $request->all();
-        unset($form['_token']);
-        user::find($user_id)->update($form);
-        
-        return redirect('/');
+        return redirect('/')->with(compact('message'));
 
     }
-
 
     // 住所変更ページ表示
     public function address($item_id){
@@ -112,13 +127,18 @@ class ProfileController extends Controller
     public function change(AddressRequest $request,$item_id){
 
         $user_id = Auth::id();
-        $item = Item::find($item_id);
+        $person = Person::where("user_id", $user_id)->first();
+        $message = '配送先を更新しました';
 
-        $form = $request->all();
-        unset($form['_token']);
-        person::where("user_id", $user_id)->update($form);
+        person::where("user_id", $user_id)->update(
+            [
+            'postcode' => $request->postcode,
+            'address' => $request->address,
+            'building' => $request->building
+            ]
+            );
 
-        return redirect()->route('purchase',[$item]);
+            return redirect()->route('purchase',compact('item_id'))->with(compact('message'));
     }
 
 

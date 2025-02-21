@@ -5,8 +5,11 @@
 @endsection
 
 @section('content')
+@if(session('message'))
+    <div class="purchase-notice">{{session('message')}}</div>
+@endif
     <div class="purchase-content">
-        <form class="purchase-form" action="" method="post">
+        <form class="purchase-form" action="/purchase/:{{$item->id}}" method="post">
             @csrf
             <div class="form-left">
                 <div class="form-group__top">
@@ -21,23 +24,29 @@
             <div class="form-group">
                 <h3 class="form-title">支払方法</h3>
                 <select class="form-select" id="select" for="payment" name="payment" onchange="showSelect()" >
-                    <option id="payment" hidden>支払方法を選択してください</option>
-                    <option id="payment" value="1" {{ old('payment') == 1 ? 'selected' : '' }}>コンビニ支払い</option>
-                    <option id="payment" value="2" {{ old('payment') == 2 ? 'selected' : '' }}>カード支払い</option>
+                    <option id="payment" hidden value="" hidden>支払方法を選択してください</option>
+                    <option id="payment" value="コンビニ支払い" {{ old('payment') == 'コンビニ支払い' ? 'selected' : '' }}>コンビニ支払い</option>
+                    <option id="payment" value="カード支払い" {{ old('payment') == 'カード支払い' ? 'selected' : '' }}>カード支払い</option>
                 </select> 
-                @error('payment')
-                    <p class="form-error">{{$errors->first('payment')}}</p>
-                @enderror
             </div>
+            @error('payment')
+                <p class="form-error">{{$errors->first('payment')}}</p>
+            @enderror
             <div class="form-group">
                 <h3 class="form-title">配送先</h3>
                 <a class="form-link" href="/purchase/address/:{{$item->id}}">変更する</a>
             </div>                    
             <div class="form-group_sub">
                 <label class="form-label" for="postcode">郵便番号</label>
-                <input class="form-input__disable" type="text" name="postcode" id="postcode" value="{{$person->postcode}}" disabled>
+                <input class="form-input__disable" type="text" name="postcode" id="postcode" value="{{$person->postcode}}" readonly>
+                @error('postcode')
+                    <p class="form-error">{{$errors->first('postcode')}}</p>
+                @enderror
                 <label class="form-label" for="address">住所</label>
-                <input type="text" class="form-input__disable" name="address" id="address" value="{{$person->address}}{{$person->building}}" disabled>    
+                <input type="text" class="form-input__disable" name="address" id="address" value="{{$person->address}}{{$person->building}}" readonly> 
+                @error('address')
+                    <p class="form-error">{{$errors->first('address')}}</p>
+                @enderror   
             </div>
             </div>
             <div class="form-right">    
@@ -52,30 +61,13 @@
                 </table>
                 <button class="form-button" type="submit">購入する</button>
             </div>
-            <div class="form-hidden">
-            <input type="text" name="buy_flag" id="" value="{{$person->user_id}}" hidden>
+            <div class="form-disable">
+                <input class="disable-input" type="text" name="item_id" value="{{$item->id}}" hidden>
             </div>
         </form>
     </div>
 
-    <script>
-        showSelect(){
-
-            let element = getElementById('select');
-            let output =  getElementById('output');
-
-            addEventListener('change',() =>{
-                if(element.option[1]){
-                    output.innerText = "コンビニ支払い";
-                }else{
-                    output.innerText = "カード支払い";
-                }
-            });
-        }
-
-    </script>
-
-
+    
 @endsection
 
 

@@ -16,7 +16,7 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->integer('postcode');
+            $table->string('postcode');
             $table->string('address');
             $table->string('building');
             $table->string('photo');

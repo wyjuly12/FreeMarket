@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Person');
     }
 
+    public function getPersonPhoto(){
+        return $this->person->photo;
+    }
+
     public function posts(){
         return $this->hasMany('App\Models\Post');
     }
@@ -55,11 +59,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Favorite');
     }
 
+    public function order(){
+        return $this->hasOne('App\Models\Order');
+    }
 
 
-    public function getPersonPhoto(){
-        return $this->person->photo;
-        }
 
 
 }

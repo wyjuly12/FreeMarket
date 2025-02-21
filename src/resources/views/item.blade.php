@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
-
+@if(session('message'))
+    <div class="item-notice">{{session('message')}}</div>
+@endif
 <div class="item-content">
     <div class="content-left">
         <img class="content-image" src="{{ asset($item->image) }}" alt="商品画像">
@@ -24,14 +26,25 @@
             <div class="content-like">
                 <form action="/item/:{{$item->id}}/like" method="post">
                     @csrf
-                    <button class="content-button__like" type="submit">マイリスト</button> 
+                    @if(session('like') == "ture")
+                    <button class="content-button__like" type="submit"></button>
+                        @else 
+                        <button class="content-button__dislike" type="submit"></button> 
+                        @endif                    
                     @if ($item->favorites->count())
-                    <span class="content-text" >お気に入り({{$item->favorites->count()}})</span>
-                    @else
-                    <span class="content-text" >お気に入り(0)</span>
+                    <span class="content-button__count" >お気に入り({{$item->favorites->count()}})</span>
+                        @else
+                        <span class="content-button__count" >お気に入り(0)</span>
                     @endif 
+                    <span class="content-button__comment"></span>
+                    @if ($item->posts->count())
+                        <span class="content-button__count">コメント({{$item->posts->count()}})</span>
+                        @else
+                        <span class="content-button__count">コメント(0)</span>
+                    @endif                     
                 </form> 
             </div>
+
         </div>
         <div class="content-group">
             <h3>商品説明</h3>
@@ -56,22 +69,21 @@
             <div class="content-comunication">
                 <label class="content-label" for="">コメント一覧</label>
                 @if ($item->posts->count())
-                    <p>コメント(<span>{{$item->posts->count()}}</span>)</p>
+                    <span>コメント({{$item->posts->count()}})</span>
                     @else
-                    <p>コメント(<span>0</span>)</p>
-                @endif    
+                    <p>コメントはありません</p>
+                @endif
                 @if($item->posts != null)
                     @foreach($item->posts as $post)
                     <div class="content-comment"> 
                         <div class="comment-user">
-                            <img src="" alt="">
+                            <img src="{{ asset( $post->getPersonPhoto() )}}" alt="">
                             <span calss="comment-user">{{$post->getUserName()}}</span>
                         </div>
                         <p calss="comment-text">{{$post->getComment()}}</p>
                     </div> 
                     @endforeach
-                @endif 
-
+                @endif            
             </div>
         </div>
         <div class="content-group">
