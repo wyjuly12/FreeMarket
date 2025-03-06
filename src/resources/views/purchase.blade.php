@@ -9,7 +9,7 @@
     <div class="purchase-notice">{{session('message')}}</div>
 @endif
     <div class="purchase-content">
-        <form class="purchase-form" action="/purchase/:{{$item->id}}" method="post">
+        <form class="purchase-form" action="/procedure" method="post">
             @csrf
             <div class="form-left">
                 <div class="form-group__top">

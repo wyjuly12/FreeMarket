@@ -4,10 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
-
-
-
 use App\Http\Controllers\PostController;
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 use App\Http\Controllers\AuthenticatedSessionController;
@@ -38,7 +37,7 @@ Route::get('/login' , [AuthController::class, 'login'] )->name('login');
 Route::get('/register' , [AuthController::class, 'register'] )->name('register');
 
 
-// 商品一覧＄商品詳細ページ
+// 商品一覧＆商品詳細ページ
 Route::get('/', [ItemController::class, 'index'])->name('index');
 Route::get('/item/:{item_id}', [ItemController::class, 'detail'])->name('item');
    
@@ -66,11 +65,8 @@ Route::middleware('auth')->group(function(){
     Route::post('/item/:{item_id}/like', [ItemController::class, 'like'])->name('like');
 
     Route::get('/purchase/:{item_id}',[ItemController::class, 'purchase'])->name('purchase');
-    Route::post('/purchase/:{item_id}',[ItemController::class, 'procedure'])->name('procedure');
+    Route::post('/procedure',[ItemController::class, 'procedure'])->name('procedure');
   
     Route::get('/purchase/address/:{item_id}',[ProfileController::class, 'address'])->name('address');
-    Route::post('/purchase/address/:{item_id}',[ProfileController::class, 'change'])->name('change');
+    Route::post('/change',[ProfileController::class, 'change'])->name('change');
 });
-
-
-

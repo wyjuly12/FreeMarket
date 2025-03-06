@@ -106,13 +106,13 @@ class ItemController extends Controller
 
 
     //商品購入機能(商品購入ページ)
-    public function procedure(PurchaseRequest $request,$item_id){
+    public function procedure(PurchaseRequest $request){
 
         $user_id = Auth::id();
         $message = '商品購入が完了しました';
         
         Order::create([
-            'item_id' => $item_id,
+            'item_id' => $request->item_id,
             'user_id' => $user_id,
             'postcode' => $request->postcode,
             'address' => $request->address, 
