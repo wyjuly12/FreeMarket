@@ -65,8 +65,8 @@ Route::middleware('auth')->group(function(){
     Route::post('/item/:{item_id}/like', [ItemController::class, 'like'])->name('like');
 
     Route::get('/purchase/:{item_id}',[ItemController::class, 'purchase'])->name('purchase');
-    Route::post('/procedure',[ItemController::class, 'procedure'])->name('procedure');
+    Route::post('/purchase/:{item_id}',[ItemController::class, 'procedure'])->name('procedure');
   
     Route::get('/purchase/address/:{item_id}',[ProfileController::class, 'address'])->name('address');
-    Route::post('/change',[ProfileController::class, 'change'])->name('change');
+    Route::post('/purchase/address/:{item_id}',[ProfileController::class, 'change'])->name('change');
 });

@@ -10,7 +10,7 @@
     <div class="form-title">
         <h2>住所変更</h2>
     </div>
-    <form action="/change" method="post">
+    <form action="/purchase/address/:{item_id->id}" method="post">
         @csrf
         <div class="form-group">
             <label for="" class="form-label">郵便番号</label>
